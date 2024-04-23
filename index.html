@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web Page</title>
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+  
+    header {
+      background-color: #3d1515;
+      color: #fff;
+      padding: 20px;
+      text-align: center; /* Center-align the content in the header */
+    }
+  
+    header h1 {
+      margin: 0;
+    }
+  
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+  
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 0; /* Added padding */
+      display: inline-block; /* Added display */
+    }
+  
+    nav ul li a:hover {
+      background-color: #732424; /* Changed background color on hover */
+      border-radius: 5px; /* Added border radius */
+    }
+  
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+  
+    section {
+      flex: 1;
+      margin-right: 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    /* Form styles */
+    form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  
+    form input,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+  
+    form button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  
+    form button:hover {
+      background-color: #555;
+    }
+  
+    /* Tutorial styles */
+    #tutorial {
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  
+    #skipTutorial {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  
+    #skipTutorial:hover {
+      background-color: #555;
+    }
+  
+    /* Sidebar styles */
+    .sidebar {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  
+    .sidebar ul {
+      padding: 0;
+      margin: 0;
+    }
+  
+    .sidebar ul li {
+      list-style-type: none;
+      margin-bottom: 5px;
+    }
+  
+    .sidebar ul li a {
+      color: #333;
+      text-decoration: none;
+    }
+  </style>
+  
+</head>
+<body>
+  <header>
+    <h1>LAZY STORE</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section>
+      <h2>Form with Error Prevention</h2>
+      <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required pattern="[a-zA-Z0-9]{5,}">
+        <span class="error">Username must be at least 5 characters long and contain only letters and numbers.</span><br><br>
+        
+        <label for="country">Country:</label>
+        <select id="country">
+          <option value="USA" selected>United States</option>
+          <option value="UK">United Kingdom</option>
+          <option value="Canada">Canada</option>
+        </select><br><br>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890"><br><br>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    
+    <section>
+      <h2>History and Navigation</h2>
+      <div class="sidebar">
+        <h3>Recent Items</h3>
+        <ul>
+          <li><a href="#">Item 1</a></li>
+          <li><a href="#">Item 2</a></li>
+          <li><a href="#">Item 3</a></li>
+        </ul>
+      </div>
+    </section>
+    
+    <section>
+      <h2>Tutorial Section</h2>
+      <div id="tutorial">
+        <p>Welcome to our website! This is a quick tutorial to help you get started.</p>
+        <!-- Tutorial content -->
+        <button id="skipTutorial">Skip Tutorial</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Interactive Web Page. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Add your JavaScript code here
+    const usernameInput = document.getElementById('username');
+    const phoneInput = document.getElementById('phone');
+    const tutorialSection = document.getElementById('tutorial');
+    const skipTutorialButton = document.getElementById('skipTutorial');
+
+    // Add event listeners for form validation
+    usernameInput.addEventListener('input', () => {
+      if (usernameInput.validity.patternMismatch) {
+        usernameInput.setCustomValidity('Username must be at least 5 characters long and contain only letters and numbers.');
+      } else {
+        usernameInput.setCustomValidity('');
+      }
+    });
+
+    // Add event listener for skip tutorial button
+    skipTutorialButton.addEventListener('click', () => {
+      tutorialSection.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
